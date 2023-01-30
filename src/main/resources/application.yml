@@ -1,0 +1,22 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${CLIENT_ID}
+            client-secret: ${CLIENT_SECRET}
+            scope:
+              - email
+              - profile
+
+  data:
+    mongodb:
+      uri: ${MONGO_DB_URI}
+      database: ${MONGO_DB_DB_NAME}
+  profiles:
+    active: dev
+application:
+  jwt:
+
+    jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
