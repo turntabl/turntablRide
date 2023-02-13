@@ -1,18 +1,16 @@
 package com.ttrides.turntablRides.controllers;
 
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/vi/demo")
 public class SampleController {
 
     @GetMapping
-    public Map<String, Object> currentUser(OAuth2AuthenticationToken oAuth2AuthenticationToken) {
-        return oAuth2AuthenticationToken.getPrincipal().getAttributes();
+    public String currentUser() {
+        return "Secured endpoint";
     }
 }

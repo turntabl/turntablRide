@@ -9,3 +9,6 @@ spring:
             scope:
               - email
               - profile
+application:
+  jwt:
+    secret: 423F4528482B4D6251655468576D5A7134743777217A25432A46294A404E6352
