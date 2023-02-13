@@ -4,15 +4,19 @@ spring:
       client:
         registration:
           google:
-            client-id: 772654340188-9coo902od8mi07afa72j4jkpf9b19fm8.apps.googleusercontent.com
-            client-secret: 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
+            client-id: ${CLIENT_ID}
+            client-secret: ${CLIENT_SECRET}
             scope:
               - email
               - profile
+
   data:
     mongodb:
-      uri: mongodb+srv://ttRides:WCGoJTINLE8aAX3q@cluster0.b5vo0.mongodb.net/?retryWrites=true&w=majority
-      database: turntablRide
+      uri: ${MONGO_DB_URI}
+      database: ${MONGO_DB_DB_NAME}
+  profiles:
+    active: dev
 application:
   jwt:
-    secret: 423F4528482B4D6251655468576D5A7134743777217A25432A46294A404E6352
+
+    jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
