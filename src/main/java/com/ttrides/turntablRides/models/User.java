@@ -1,8 +1,9 @@
 package com.ttrides.turntablRides.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -16,7 +17,7 @@ import java.util.Collections;
 @Builder
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Entity
+@Document
 public class User implements UserDetails {
 
     @Id

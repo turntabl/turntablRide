@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .httpBasic().disable()
                 .authorizeHttpRequests(authorize ->
                         authorize
-                                .requestMatchers("/api/v1/auth/**")
+                                .requestMatchers("/api/v1/auth/*")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()
