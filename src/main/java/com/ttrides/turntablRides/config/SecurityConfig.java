@@ -1,42 +1,40 @@
 package com.ttrides.turntablRides.config;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final JwtAuthFilter jwtAuthFilter;
-
-    private final AuthenticationProvider authenticationProvider;
+    @Value("${application.jwt.jwk-set-uri}")
+    private String JWK_SET_URI;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
+        http.authorizeHttpRequests(authorize ->
+                authorize
+                        .anyRequest().fullyAuthenticated()
+        )
                 .csrf().disable()
-                .httpBasic().disable()
-                .authorizeHttpRequests(authorize ->
-                        authorize
-                                .requestMatchers("/api/v1/auth/*")
-                                .permitAll()
-                                .anyRequest()
-                                .authenticated()
-                )
-                .sessionManagement(sessionConfig -> sessionConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                )
-                .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .cors().disable()
+                .sessionManagement(sessionConfig -> sessionConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .oauth2ResourceServer().jwt();
 
-        ;
         return http.build();
+    }
+
+    @Bean
+    public JwtDecoder jwtDecoder() {
+        return NimbusJwtDecoder.withJwkSetUri(JWK_SET_URI).build();
     }
 }
