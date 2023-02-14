@@ -6,6 +6,8 @@ target/
 
 src/main/resources/application-dev.yml
 
+application-dev.yml
+
 ### STS ###
 .apt_generated
 .classpath
