@@ -11,10 +11,8 @@ public class ChatModel {
     @Id
     private Long id;
 
-    private UserModel sender;
+    private UserModel sender, recipient;
 
-    private UserModel recipient;
-
-    private String message;
+    private String content, type;
 
 }
