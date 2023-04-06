@@ -6,11 +6,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api/v1/login")
+@RequestMapping("/api/v1")
 public class UserController {
 
-    @GetMapping
-    public String currentUser() {
+    @GetMapping("/login")
+    public String loginUser() {
         return "Secured endpoint";
     }
+
 }
