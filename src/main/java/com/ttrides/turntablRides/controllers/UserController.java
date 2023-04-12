@@ -1,7 +1,6 @@
 package com.ttrides.turntablRides.controllers;
 
-import com.ttrides.turntablRides.model.response.TTResponse;
-import org.springframework.http.HttpHeaders;
+import com.ttrides.turntablRides.models.response.TTResponse;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

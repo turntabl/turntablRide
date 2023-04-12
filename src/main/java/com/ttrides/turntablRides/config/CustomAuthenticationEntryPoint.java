@@ -3,7 +3,7 @@ package com.ttrides.turntablRides.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ttrides.turntablRides.exception.CustomAuthenticationException;
-import com.ttrides.turntablRides.model.response.TTResponse;
+import com.ttrides.turntablRides.models.response.TTResponse;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

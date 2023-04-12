@@ -1,4 +1,4 @@
-package com.ttrides.turntablRides.model.response;
+package com.ttrides.turntablRides.models.response;
 
 import lombok.*;
 

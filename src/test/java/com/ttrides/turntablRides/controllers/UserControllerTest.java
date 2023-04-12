@@ -1,7 +1,7 @@
 package com.ttrides.turntablRides.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ttrides.turntablRides.model.response.TTResponse;
+import com.ttrides.turntablRides.models.response.TTResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
