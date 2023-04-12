@@ -1,7 +1,12 @@
 package com.ttrides.turntablRides.controllers;
 
+import com.ttrides.turntablRides.model.response.TTResponse;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -9,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1")
 public class UserController {
 
-    @GetMapping("/login")
-    public String loginUser() {
-        return "Secured endpoint";
+    @GetMapping(value = "/login", produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    public ResponseEntity<TTResponse> loginUser() {
+        return ResponseEntity.ok().body(TTResponse.builder().statusCode(200).statusText("Authorised").message("Secured endpoint").build());
     }
-
 }
