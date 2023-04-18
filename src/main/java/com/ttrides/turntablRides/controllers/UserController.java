@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @GetMapping(value = "/login", produces = {MediaType.APPLICATION_JSON_VALUE})
-    @ResponseBody
     public ResponseEntity<TTResponse> loginUser() {
         return ResponseEntity.ok().body(TTResponse.builder().statusCode(200).statusText("Authorised").message("Secured endpoint").build());
     }
