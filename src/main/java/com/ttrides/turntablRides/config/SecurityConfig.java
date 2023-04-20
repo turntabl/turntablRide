@@ -10,7 +10,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.web.SecurityFilterChain;
-
 /*
 Global security config to decide how security (authentication and authorization should be implemented
  */
@@ -30,11 +29,10 @@ public class SecurityConfig {
     to exist, and we create one using NimbusJwtDecoder and a user for Google's key certs
      */
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(authorize ->
-                authorize
-                        .anyRequest().fullyAuthenticated()
-        )
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, CustomAuthenticationEntryPoint customAuthenticationEntryPoint) throws Exception {
+        http.exceptionHandling().authenticationEntryPoint(customAuthenticationEntryPoint)
+                .and()
+                .authorizeHttpRequests(authorize -> authorize.anyRequest().fullyAuthenticated())
                 .csrf().disable()
                 .cors().disable()
                 .sessionManagement(sessionConfig -> sessionConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

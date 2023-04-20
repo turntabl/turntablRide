@@ -10,7 +10,12 @@ spring:
               - email
               - profile
 
-    profiles:
+  data:
+    mongodb:
+      uri: ${MONGO_DB_URI}
+      database: ${MONGO_DB_DB_NAME}
+
+  profiles:
     active: dev
 application:
   jwt:
