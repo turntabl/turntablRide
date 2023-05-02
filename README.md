@@ -36,7 +36,8 @@ Note that the same client-id and secret is what front end clients would use to o
 Using MongoDB Atlas for storing the application data.
 To connect to the db, inside the `application-dev.yml` file add the entries:
 
-MONGO_DB_DB_NAME: [name of the database given]
 MONGO_DB_URI: [link to access the mongodb atlas]
+
+MONGO_DB_DB_NAME: [name of the database given]
 
 Login into https://cloud.mongodb.com/, to activate the atlas database.
